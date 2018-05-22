@@ -1,9 +1,17 @@
-import React from 'react';
-import ReactModal from 'react-modal';
+import * as React from 'react';
+import * as ReactModal from 'react-modal';
+import { Dispatch } from 'redux';
+import { IAppState, ISpot } from '../../types';
 
 import './spotDetailsModal.css';
 
-const SpotDetailsModal = (props) => {
+interface ISpotDetailsModalProps {
+    isOpen: boolean;
+    onRequestClose: () => Dispatch<IAppState>;
+    spot: ISpot | null;
+}
+
+const SpotDetailsModal = (props: ISpotDetailsModalProps) => {
     return (
         <ReactModal
           className="spot-details-modal"

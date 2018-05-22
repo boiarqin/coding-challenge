@@ -1,4 +1,6 @@
+import { Dispatch } from 'react-redux';
 import { makeSearchResultsRequest } from '../services';
+import { ISpot } from '../types';
 // ACTIONS
 export const FETCH_SEARCH_RESULTS = 'FETCH_SEARCH_RESULTS';
 export const FETCH_SEARCH_RESULTS_ERROR = 'FETCH_SEARCH_RESULTS_ERROR';
@@ -7,11 +9,11 @@ export const OPEN_DETAILS_MODAL = 'OPEN_DETAILS_MODAL';
 export const CLOSE_DETAILS_MODAL = 'CLOSE_DETAILS_MODAL';
 
 export const loadSearchResults = () => {
-    return (dispatch) => {
+    return (dispatch: Dispatch) => {
         dispatch(fetchSearchResults());
         return makeSearchResultsRequest().then(
-            data => dispatch(updateSearchResults(data)),
-            error => dispatch(fetchSearchResultsError())
+            (data: ISpot[]) => dispatch(updateSearchResults(data)),
+            (error: any) => dispatch(fetchSearchResultsError())
         )
     }
 };
@@ -28,17 +30,17 @@ export const fetchSearchResultsError = () => {
     };
 };
 
-export const updateSearchResults = (data) => {
+export const updateSearchResults = (data: ISpot[]) => {
     return {
-        type: UPDATE_SEARCH_RESULTS,
-        data
+        data,
+        type: UPDATE_SEARCH_RESULTS
     };
 };
 
-export const openDetailsModal = (selectedSearchResultIndex) => {
+export const openDetailsModal = (selectedSearchResultIndex: number) => {
     return {
-        type: OPEN_DETAILS_MODAL,
-        selectedSearchResultIndex
+        selectedSearchResultIndex,
+        type: OPEN_DETAILS_MODAL
     };
 };
 

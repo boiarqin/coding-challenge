@@ -1,8 +1,16 @@
-import React from 'react';
+import * as React from 'react';
+import { Dispatch } from 'redux';
+import { IAppState, ISpot } from '../../types';
 
 import './searchResultsItem.css';
 
-const SearchResultsItem = (props) => {
+interface ISearchResultsItemProps {
+    data: ISpot;
+    detailsClickHandler: () => Dispatch<IAppState>;
+    isSelected: boolean;
+}
+
+const SearchResultsItem = (props: ISearchResultsItemProps) => {
     return (
         <div className={"search-results-item " + (props.isSelected ? "selected" : "") }>
             <div className="item-left">

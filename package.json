@@ -10,7 +10,8 @@
     "react-modal": "^3.4.4",
     "react-redux": "^5.0.7",
     "react-scripts": "1.1.4",
-    "redux": "^4.0.0",
+    "react-scripts-ts": "^2.16.0",
+    "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
     "request": "^2.87.0",
     "request-promise": "^4.2.2"
@@ -18,21 +19,27 @@
   "scripts": {
     "build-css": "node-sass-chokidar src/ -o src/",
     "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
-    "start-js": "react-scripts start",
+    "start-js": "react-scripts-ts start",
     "start": "npm-run-all -p watch-css start-js",
-    "build-js": "react-scripts build",
+    "build-js": "react-scripts-ts build",
     "build": "npm-run-all build-css build-js",
-    "test": "react-scripts test --env=jsdom",
-    "test-coverage": "react-scripts test --env=jsdom --coverage",
-    "eject": "react-scripts eject"
+    "test": "react-scripts-ts test --env=jsdom",
+    "test-coverage": "react-scripts-ts test --env=jsdom --coverage"
   },
   "devDependencies": {
+    "@types/react": "^16.3.14",
+    "@types/react-dom": "^16.0.5",
+    "@types/react-modal": "^3.1.2",
+    "@types/react-redux": "^6.0.0",
+    "@types/redux-thunk": "^2.1.0",
+    "@types/request-promise": "^4.1.41",
     "enzyme": "^3.3.0",
-    "enzyme-adapter-react-16": "^1.1.1"
+    "enzyme-adapter-react-16": "^1.1.1",
+    "typescript": "^2.8.3"
   },
   "jest": {
-    "collectCoverageFrom" : [
-      "src/**/*.{js,jsx}",
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}",
       "!src/index.js",
       "!src/setupTests.js",
       "!src/registerServiceWorker.js"

@@ -1,22 +1,34 @@
-import React from 'react';
+import * as React from 'react';
 import { connect } from 'react-redux';
+import { Dispatch } from 'redux';
+
 import { openDetailsModal } from '../../actions';
 import Breadcrumb from '../breadcrumb/breadcrumb';
 import SearchResultsItem from '../searchResultsItem/searchResultsItem';
 
+import { IAppState, ISearchParameters, ISpot } from '../../types';
+
 import './searchResults.css'; 
 
-const mapStateToProps = (state) => ({
-    results: state.searchResults,
+interface ISearchResultsProps {
+    dispatchOpenDetailsModal: (searchResultsIndex: number) => Dispatch<IAppState>,
+    parameters: ISearchParameters,
+    results: ISpot[],
+    selectedSearchResultIndex: number | null
+}
+
+const mapStateToProps = (state: IAppState, ownProps: ISearchResultsProps) => ({
+    ...ownProps,
     parameters: state.searchParameters,
+    results: state.searchResults,
     selectedSearchResultIndex: state.selectedSearchResultIndex
 });
 
-const mapDispatchToProps = (dispatch) => ({
-    dispatchOpenDetailsModal: (searchResultsIndex) => dispatch(openDetailsModal(searchResultsIndex))
+const mapDispatchToProps = (dispatch: Dispatch<IAppState>) => ({
+    dispatchOpenDetailsModal: (searchResultsIndex: number) => dispatch(openDetailsModal(searchResultsIndex))
 });
 
-export const SearchResults = (props) => {
+export const SearchResults = (props: ISearchResultsProps) => {
     const resultsList = props.results.map((result, i) => {
         return (
         <SearchResultsItem
@@ -30,7 +42,11 @@ export const SearchResults = (props) => {
     return (
         <div className="search-results">
             <div className="search-results-header">
-                <Breadcrumb parameters={props.parameters}/>
+                <Breadcrumb
+                    city={props.parameters.city}
+                    cityLink={props.parameters.cityLink}
+                    near={props.parameters.near}
+                />
                 <span className="results-near">
                     {props.parameters.near}
                 </span>
@@ -45,7 +61,7 @@ export const SearchResults = (props) => {
     );
 }
 
-export default connect(
+export default connect<ISearchResultsProps>(
     mapStateToProps,
     mapDispatchToProps
 )(SearchResults);

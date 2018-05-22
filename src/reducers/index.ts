@@ -1,24 +1,24 @@
 import {
+    CLOSE_DETAILS_MODAL,
     FETCH_SEARCH_RESULTS,
     FETCH_SEARCH_RESULTS_ERROR,
-    UPDATE_SEARCH_RESULTS,
     OPEN_DETAILS_MODAL,
-    CLOSE_DETAILS_MODAL
+    UPDATE_SEARCH_RESULTS,
 } from '../actions';
 
 export const initialAppState = () => ({
     loading: false,
-    spotDetailsModalOpen: false,
     searchParameters: {
       city: "Chicago",
       cityLink: "/chicago",
       near: "Millennium Park"
     },
+    searchResults: [],
     selectedSearchResultIndex: null,
-    searchResults: []
+    spotDetailsModalOpen: false
   })
 
-const appReducer = (state=initialAppState(), action) => {
+const appReducer = (state=initialAppState(), action: any) => {
     switch(action.type) {
         case FETCH_SEARCH_RESULTS:
             return {
@@ -42,14 +42,14 @@ const appReducer = (state=initialAppState(), action) => {
                 && action.selectedSearchResultIndex < state.searchResults.length;
             return {                
                 ...state,
-                spotDetailsModalOpen: isValidNumber,
                 selectedSearchResultIndex: isValidNumber ? action.selectedSearchResultIndex : null,
+                spotDetailsModalOpen: isValidNumber,
             };
         case CLOSE_DETAILS_MODAL:
             return {
                 ...state,
-                spotDetailsModalOpen: false,
                 selectedSearchResultIndex: null,
+                spotDetailsModalOpen: false,
             };
         default:
             return state;

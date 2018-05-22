@@ -9,5 +9,9 @@ it('renders without crashing', () => {
         cityLink: 'washingtondc',
         near: 'Lincoln Memorial'
     }
-    shallow(<Breadcrumb parameters={parameters}/>);
+    shallow(<Breadcrumb
+        city={parameters.city}
+        cityLink={parameters.cityLink}
+        near={parameters.near}
+    />);
 });
