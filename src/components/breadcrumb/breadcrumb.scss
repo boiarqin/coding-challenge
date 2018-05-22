@@ -4,4 +4,11 @@
     display: block;
     font-size: $font-size-s;
     color: $dark-gray;
+
+    & > * {
+        margin-right: 5px;
+    }
+    .caret {
+        color: $black;
+    }
 }

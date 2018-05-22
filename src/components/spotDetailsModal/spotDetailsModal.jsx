@@ -1,39 +1,39 @@
-import React,{Component} from 'react';
+import React from 'react';
 import ReactModal from 'react-modal';
 
 import './spotDetailsModal.css';
 
-class SpotDetailsModal extends Component {
-    constructor(props) {
-        super(props);
-    }
+ReactModal.setAppElement('#root');
 
-    render() {
-        return (
+const SpotDetailsModal = (props) => {
+    return (
         <ReactModal
           className="spot-details-modal"
           overlayClassName="spot-details-modal-overlay"
-          isOpen={this.props.isOpen}
+          isOpen={props.isOpen}
+          onRequestClose={props.onRequestClose}
           shouldCloseOnOverlayClick={true}
           contentLabel="Spot Details"
         >
             <div className="modal-header">
                 Spot Details
-                <button className="close-button">
+                <button
+                    className="close-button"
+                    onClick={props.onRequestClose}
+                >
                     &#x2715;
                 </button>
             </div>
             <div className="modal-body">
                 <span className="spot-details-title">
-                    {this.props.spot && this.props.spot.title}
+                    {props.spot && props.spot.title}
                 </span>
                 <p className="spot-details-description">
-                    {this.props.spot && this.props.spot.description}
+                    {props.spot && props.spot.description}
                 </p>
             </div>
         </ReactModal>
-        );
-    }
+    );
 }
 
 export default SpotDetailsModal;

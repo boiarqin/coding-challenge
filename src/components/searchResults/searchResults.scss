@@ -15,7 +15,9 @@ $searchResultsHeaderHeight: 160px;
     }
     .results-near {
         font-size: $font-size-xl;
+        font-weight: bold;
         color: $black;
+        line-height: $line-height-l;
     }
     .results-number {
         font-size: $font-size-xs;

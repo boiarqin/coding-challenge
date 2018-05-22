@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { openDetailsModal } from '../../actions';
 import Breadcrumb from '../breadcrumb/breadcrumb';
 import SearchResultsItem from '../searchResultsItem/searchResultsItem';
 
@@ -7,11 +8,12 @@ import './searchResults.css';
 
 const mapStateToProps = (state) => ({
     results: state.searchResults,
-    parameters: state.searchParameters
+    parameters: state.searchParameters,
+    selectedSearchResultIndex: state.selectedSearchResultIndex
 });
 
 const mapDispatchToProps = (dispatch) => ({
-
+    dispatchOpenDetailsModal: (searchResultsIndex) => dispatch(openDetailsModal(searchResultsIndex))
 });
 
 const SearchResults = (props) => {
@@ -20,6 +22,8 @@ const SearchResults = (props) => {
         <SearchResultsItem
             key={i}
             data={result}
+            isSelected={props.selectedSearchResultIndex === i}
+            detailsClickHandler={() => props.dispatchOpenDetailsModal(i)}
         />
         );
     })

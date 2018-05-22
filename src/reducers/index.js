@@ -1,5 +1,5 @@
 import {
-//    FETCH_SEARCH_RESULTS,
+    FETCH_SEARCH_RESULTS,
     FETCH_SEARCH_RESULTS_ERROR,
     UPDATE_SEARCH_RESULTS,
     OPEN_DETAILS_MODAL,
@@ -20,12 +20,11 @@ const initialAppState = {
 
 const appReducer = (state=initialAppState, action) => {
     switch(action.type) {
-        /*
         case FETCH_SEARCH_RESULTS:
             return {
                 ...state,
                 loading: true
-            }; */
+            };
         case FETCH_SEARCH_RESULTS_ERROR:
             return {
                 ...state,
@@ -38,7 +37,7 @@ const appReducer = (state=initialAppState, action) => {
                 searchResults: action.data
             };
         case OPEN_DETAILS_MODAL:
-            return {
+            return {                
                 ...state,
                 spotDetailsModalOpen: true,
                 selectedSearchResultIndex: action.selectedSearchResultIndex,

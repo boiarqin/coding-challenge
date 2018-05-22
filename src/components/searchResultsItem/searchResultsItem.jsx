@@ -4,7 +4,7 @@ import './searchResultsItem.css';
 
 const SearchResultsItem = (props) => {
     return (
-        <div className="search-results-item">
+        <div className={"search-results-item " + (props.isSelected ? "selected" : "") }>
             <div className="item-left">
                 <img
                     className="item-image"
@@ -15,7 +15,12 @@ const SearchResultsItem = (props) => {
             <div className="item-right">
                 <span className="title">{props.data.title}</span>
                 <span className="distance">{props.data.distance}</span>
-                <button className="details-button">Details</button>
+                <button
+                    className="details-button"
+                    onClick={props.detailsClickHandler}
+                >
+                    Details
+                </button>
             </div>
         </div>
     );

@@ -1,5 +1,6 @@
 export const getSelectedSpot = (state) => {
-    if (state.searchResults.length > 0 && state.selectedSearchResultIndex){
+    const indexIsNumber = state.selectedSearchResultIndex !== null;
+    if (state.searchResults.length > 0 && indexIsNumber){
         return state.searchResults[state.selectedSearchResultIndex];
     } else {
         return null;

@@ -1,5 +1,6 @@
 import { makeSearchResultsRequest } from '../services';
 // ACTIONS
+export const FETCH_SEARCH_RESULTS = 'FETCH_SEARCH_RESULTS';
 export const FETCH_SEARCH_RESULTS_ERROR = 'FETCH_SEARCH_RESULTS_ERROR';
 export const UPDATE_SEARCH_RESULTS = 'UPDATE_SEARCH_RESULTS';
 export const OPEN_DETAILS_MODAL = 'OPEN_DETAILS_MODAL';
@@ -7,11 +8,18 @@ export const CLOSE_DETAILS_MODAL = 'CLOSE_DETAILS_MODAL';
 
 export const loadSearchResults = () => {
     return (dispatch) => {
+        dispatch(fetchSearchResults());
         return makeSearchResultsRequest().then(
             data => dispatch(updateSearchResults(data)),
             error => dispatch(fetchSearchResultsError())
         )
     }
+};
+
+export const fetchSearchResults = () => {
+    return {
+        type: FETCH_SEARCH_RESULTS,
+    };
 };
 
 export const fetchSearchResultsError = () => {

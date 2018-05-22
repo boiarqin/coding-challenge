@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { loadSearchResults } from './actions';
+import { closeDetailsModal, loadSearchResults } from './actions';
 import { getSelectedSpot } from './selectors';
 import SearchResults from './components/searchResults/searchResults';
 import SpotDetailsModal from './components/spotDetailsModal/spotDetailsModal';
@@ -14,13 +14,11 @@ const mapStateToProps = (state, props) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  dispatchCloseDetailsModal: () => dispatch(closeDetailsModal()),
   dispatchLoadSearchResults: () => dispatch(loadSearchResults())
 });
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-  }
   componentDidMount() {
     this.props.dispatchLoadSearchResults();
   }
@@ -34,6 +32,7 @@ class App extends Component {
         <SpotDetailsModal
           spot={this.props.selectedSpot}
           isOpen={this.props.spotDetailsModalOpen}
+          onRequestClose={this.props.dispatchCloseDetailsModal}
         />
       </div>
     );

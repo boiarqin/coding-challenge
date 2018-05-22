@@ -5,9 +5,8 @@
     width: 100%;
     padding: 15px;
     border-left: 5px solid transparent;
-    cursor: pointer;
-
-    &:hover {
+    
+    &:hover, &.selected {
         background: $light-gray;
         border-left-color: $green;
     }
@@ -27,6 +26,7 @@
 
     .title {
         font-size: $font-size-m;
+        font-weight: bold;
         color: $black;
     }
 
@@ -41,5 +41,6 @@
         background-color: transparent;
         font-size: $font-size-s;
         color: $blue;
+        cursor: pointer;
     }
 }

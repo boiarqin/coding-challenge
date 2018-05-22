@@ -7,7 +7,13 @@ const Breadcrumb = (props) => {
         <span className="breadcrumb">
             <a className="city" href={props.parameters.cityLink}>
                 {props.parameters.city}
-            </a> &gt; {props.parameters.near}
+            </a>
+            <span className="caret">
+                &gt;
+            </span>
+            <span className="near">
+                {props.parameters.near}
+            </span>
         </span>
     );
 };
