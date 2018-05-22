@@ -6,7 +6,7 @@ import {
     CLOSE_DETAILS_MODAL
 } from '../actions';
 
-const initialAppState = {
+export const initialAppState = () => ({
     loading: false,
     spotDetailsModalOpen: false,
     searchParameters: {
@@ -16,9 +16,9 @@ const initialAppState = {
     },
     selectedSearchResultIndex: null,
     searchResults: []
-  }
+  })
 
-const appReducer = (state=initialAppState, action) => {
+const appReducer = (state=initialAppState(), action) => {
     switch(action.type) {
         case FETCH_SEARCH_RESULTS:
             return {
@@ -37,10 +37,13 @@ const appReducer = (state=initialAppState, action) => {
                 searchResults: action.data
             };
         case OPEN_DETAILS_MODAL:
+            const isValidNumber = (typeof action.selectedSearchResultIndex === "number")
+                && action.selectedSearchResultIndex >= 0
+                && action.selectedSearchResultIndex < state.searchResults.length;
             return {                
                 ...state,
-                spotDetailsModalOpen: true,
-                selectedSearchResultIndex: action.selectedSearchResultIndex,
+                spotDetailsModalOpen: isValidNumber,
+                selectedSearchResultIndex: isValidNumber ? action.selectedSearchResultIndex : null,
             };
         case CLOSE_DETAILS_MODAL:
             return {
