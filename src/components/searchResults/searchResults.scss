@@ -1,0 +1,35 @@
+@import '../../styles/_variables';
+
+$searchResultsHeaderHeight: 160px;
+
+.search-results {
+    border: 1px solid $medium-gray;
+    background-color: $white;
+
+    .search-results-header {
+        height: $searchResultsHeaderHeight;
+        padding: 35px;
+    }
+    .results-near, .results-number {
+        display: block;
+    }
+    .results-near {
+        font-size: $font-size-xl;
+        color: $black;
+    }
+    .results-number {
+        font-size: $font-size-xs;
+        color: $dark-gray;
+    }
+
+    .search-results-body {
+        overflow-y: auto;
+        height: $appHeight - $searchResultsHeaderHeight;
+        border-top: 1px solid $medium-gray;
+        border-bottom: 1px solid $medium-gray;
+
+        .search-results-item {
+            border-bottom: 1px solid $light-gray;
+        }
+    }
+}

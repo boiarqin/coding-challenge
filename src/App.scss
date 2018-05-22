@@ -1,0 +1,28 @@
+@import 'styles/_variables';
+
+.App {
+  display: flex;
+  background-color: $light-gray; 
+  height: $appHeight;
+  width: $appWidth;
+}
+
+.left-panel {
+  width: 35%;
+  min-width: 500px;
+  height: $appHeight;
+}
+.right-panel {
+  width: 65%;
+  height: $appHeight;
+}
+
+a,
+a:link,
+a:visited,
+a:hover,
+a:active {
+    font-size: $font-size-s;
+    color: $blue;
+    text-decoration: none;
+}
