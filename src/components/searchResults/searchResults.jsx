@@ -16,7 +16,7 @@ const mapDispatchToProps = (dispatch) => ({
     dispatchOpenDetailsModal: (searchResultsIndex) => dispatch(openDetailsModal(searchResultsIndex))
 });
 
-const SearchResults = (props) => {
+export const SearchResults = (props) => {
     const resultsList = props.results.map((result, i) => {
         return (
         <SearchResultsItem

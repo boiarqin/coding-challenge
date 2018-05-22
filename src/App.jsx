@@ -7,7 +7,6 @@ import SpotDetailsModal from './components/spotDetailsModal/spotDetailsModal';
 
 import './App.css';
 
-
 const mapStateToProps = (state, props) => ({
   selectedSpot: getSelectedSpot(state),
   spotDetailsModalOpen: state.spotDetailsModalOpen
@@ -18,7 +17,7 @@ const mapDispatchToProps = (dispatch) => ({
   dispatchLoadSearchResults: () => dispatch(loadSearchResults())
 });
 
-class App extends Component {
+export class App extends Component {
   componentDidMount() {
     this.props.dispatchLoadSearchResults();
   }
