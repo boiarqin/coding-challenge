@@ -3,8 +3,6 @@ import ReactModal from 'react-modal';
 
 import './spotDetailsModal.css';
 
-ReactModal.setAppElement('#root');
-
 const SpotDetailsModal = (props) => {
     return (
         <ReactModal

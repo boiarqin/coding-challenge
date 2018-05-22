@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import ReactModal from 'react-modal';
 import { Provider } from 'react-redux';
 import { applyMiddleware, createStore } from 'redux';
 import ReduxThunk from 'redux-thunk';
@@ -11,6 +12,8 @@ import registerServiceWorker from './registerServiceWorker';
 import './index.css';
 
 const store = createStore(appReducer, applyMiddleware(ReduxThunk));
+
+ReactModal.setAppElement('#root');
 
 ReactDOM.render(
     <Provider store={store}>
