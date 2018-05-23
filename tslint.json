@@ -10,6 +10,7 @@
         "coverage/**/*.js",
         "src/**/*.test.js",
         "src/setupTests.js",
+        "src/setupTests.ts",
         "src/registerServiceWorker.js"
       ]
     }
